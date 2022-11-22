@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\GaleriController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,3 +59,19 @@ Route::get('/buku/search', [BukuController::class, 'search'])->name('buku.search
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/user', [UserController::class, 'index'])->name('user.index');
+
+Route::get('/galeri', [GaleriController::class, 'index'])->name('galeri.index');;
+
+Route::get('/galeri/create', [GaleriController::class, 'create'])->name('galeri.create');
+
+Route::post('/galeri', [GaleriController::class, 'store'])->name('galeri.store');
+
+Route::get('/galeri/edit/{id}', [GaleriController::class, 'edit'])->name('galeri.edit');
+
+Route::post('/galeri/update/{id}', [GaleriController::class, 'update'])->name('galeri.update');
+
+Route::post('/galeri/delete/{id}', [GaleriController::class, 'destroy'])->name('galeri.destroy');
+
+Route::get('/detail-buku/{buku_seo}', [BukuController::class, 'galbuku'])->name('buku.detail');

@@ -39,6 +39,9 @@
                 <td>
                       <a class="btn btn-primary" href="{{ route('buku.edit', $buku->id) }}" role="button">Ubah</a></tr>
                 </td>
+                <td>
+                      <a class="btn btn-primary" href="{{ route('buku.detail', $buku->buku_seo) }}" role="button">Detail</a></tr>
+                </td>
             </tr>
         @endforeach
             <tr>

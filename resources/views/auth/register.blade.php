@@ -62,6 +62,16 @@
                             </div>
                         </div>
 
+                        <div>
+                        <input type="radio" id="admin" name="level" value="admin" checked>
+                        <label for="admin">Admin</label><br>
+                        </div>
+
+                        <div>
+                        <input type="radio" id="user" name="level" value="user">
+                        <label for="user">User</label><br>
+                        </div>
+
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

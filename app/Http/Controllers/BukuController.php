@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Buku;
 
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class BukuController extends Controller
@@ -32,6 +33,7 @@ class BukuController extends Controller
         $buku->penulis = $request->penulis;
         $buku->harga = $request->harga;
         $buku->tgl_terbit = $request->tgl_terbit;
+        $buku->buku_seo = Str::slug($request->judul, '-');
         $buku->save();
         return redirect('/buku')->with('pesan', 'Data Buku berhasil disimpan');
     }
@@ -64,6 +66,12 @@ class BukuController extends Controller
         $jumlah_buku = $data_buku->count();
         $no = $batas * ($data_buku->currentPage() - 1);
         return view('buku.search', compact('jumlah_buku', 'data_buku', 'no', 'cari'));
+    }
+
+    public function galbuku($buku_seo){
+        $buku = Buku::where('buku_seo', $buku_seo)->first();
+        $galeri = $buku->photos()->orderBy('id','desc')->paginate(6);
+        return view('buku.detail-buku', compact('buku', 'galeri'));
     }
 
     public function __construct()
